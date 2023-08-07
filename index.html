@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Odliczanie do odzyskania prawa jazdy</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #bb9898;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+           
+        }
+        #odliczanie {
+            font-size: 24px;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Do odzyskania prawa jazdy zostało</h1>
+    <div id="odliczanie">Pozostało Godzin, minut, sekund, dni.</div>
+    <script>
+        function aktualizujCzas() {
+            var teraz = new Date().getTime();
+            var dataCelu = new Date("Aug 29, 2023 00:00:00").getTime();
+            var pozostalo = dataCelu - teraz;
+
+            var dni = Math.floor(pozostalo / (1000 * 60 * 60 * 24));
+            var godzin = Math.floor((pozostalo % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minut = Math.floor((pozostalo % (1000 * 60 * 60)) / (1000 * 60));
+            var sekund = Math.floor((pozostalo % (1000 * 60)) / 1000);
+
+            document.getElementById("odliczanie").innerHTML = + dni + " dni, " + godzin + " Godzin, " + minut + " minut, " + sekund + " sekund.";
+        }
+
+        setInterval(aktualizujCzas, 1000);
+    </script>
+</body>
+</html>
